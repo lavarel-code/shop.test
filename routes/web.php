@@ -18,3 +18,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::namespace('Cp')->prefix('cp')->name('cp')->group(function () {
+    Route::prefix('users')->name('.users')->group(function () {
+        Route::get('/', 'UserController@index')->name('.index');
+        Route::get('create', 'UserController@create')->name('.create');
+    });
+});
