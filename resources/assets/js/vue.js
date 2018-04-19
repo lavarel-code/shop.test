@@ -21,7 +21,9 @@ if ($('#create-user').length) {
     new Vue({
         el: '#create-user',
         data: {
-            name: ""
+            name: "",
+            email: "",
+            password: ""
         },
         methods: {
             submit: function () {
