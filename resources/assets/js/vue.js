@@ -27,9 +27,26 @@ if ($('#create-user').length) {
         },
         methods: {
             submit: function () {
-                if (!this.$validator.any()) {
-
-                }
+                var data = this._data;
+                var validator = this.$validator;
+                validator.validateAll().then(function (value) {
+                    if (value) {
+                        axios.post(document.getElementById('create-user').action, data)
+                            .then(function (response) {
+                                console.log(response);
+                            })
+                            .catch(function (result) {
+                                if (result.response.status == 422) {
+                                    for (var field in result.response.data.errors) {
+                                        validator.errors.add({
+                                            field: field,
+                                            msg: _.head(result.response.data.errors[field])
+                                        })
+                                    }
+                                }
+                            });
+                    }
+                });
             }
         }
     });
