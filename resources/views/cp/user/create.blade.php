@@ -19,7 +19,7 @@
         </div>
         <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" v-model="password" v-validate="'required|min:6'"
+            <input type="text" v-model="password" v-validate="'required|min:6'"
                    :class="{'form-control': true, 'is-invalid': errors.has('password')}" id="password" name="password"
                    placeholder="Enter password">
             <div class="invalid-feedback">@{{ errors.first('password') }}</div>
