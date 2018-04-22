@@ -1,19 +1,20 @@
 import Vue from 'vue';
 import VeeValidate from 'vee-validate';
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
-
 Vue.use(VeeValidate);
 
-if ($('#app').length) {
-    new Vue({
-        el: '#app'
+
+if ($('#flash-message').length) {
+    var flashMessage = new Vue({
+        el: '#flash-message',
+        data: {
+            message: ''
+        },
+        watch: {
+            message: function () {
+                return !!this.message;
+            }
+        }
     });
 }
 
@@ -21,9 +22,9 @@ if ($('#create-user').length) {
     new Vue({
         el: '#create-user',
         data: {
-            name: "",
-            email: "",
-            password: ""
+            name: "fsdfsd",
+            email: "fdfs@fdsf.com",
+            password: "fsdfsdf"
         },
         methods: {
             submit: function () {
@@ -43,6 +44,7 @@ if ($('#create-user').length) {
                                             msg: _.head(result.response.data.errors[field])
                                         })
                                     }
+                                    flashMessage.message = result.response.statusText
                                 }
                             });
                     }

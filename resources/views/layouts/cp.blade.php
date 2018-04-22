@@ -25,6 +25,15 @@
             </ul>
         </div>
     </nav>
+    <div id="flash-message">
+        <div :class="{'alert alert alert-danger alert-dismissible': true, 'show': message, 'fade': !message}"
+             role="alert">
+            @{{message}}
+            <button @click="message = ''" type="button" class="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
     <div class="row">
         <div class="col-12">
             @yield('content')
