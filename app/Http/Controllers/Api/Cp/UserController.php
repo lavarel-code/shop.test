@@ -24,5 +24,7 @@ class UserController extends Controller
         );
 
         $user->save();
+
+        return redirect()->route('cp.users.show', ['id' => $user->id]);
     }
 }

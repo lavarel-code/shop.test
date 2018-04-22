@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Cp;
 
 
 use App\Http\Controllers\Controller;
+use App\User;
 
 /**
  * Class UserController
@@ -31,5 +32,10 @@ class UserController extends Controller
     public function create()
     {
         return view('cp.user.create');
+    }
+
+    public function show(User $user)
+    {
+        return $user->id;
     }
 }
