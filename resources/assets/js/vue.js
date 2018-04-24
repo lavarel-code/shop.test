@@ -41,7 +41,7 @@ if ($('#create-user').length) {
                                             msg: _.head(result.response.data.errors[field])
                                         })
                                     }
-                                    flashMessage.message = result.response.statusText
+                                    flashMessage.message = result.response.data.message
                                 }
                             });
                     }
