@@ -12,6 +12,7 @@ namespace App\Http\Controllers\Api\Cp;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
 use App\User;
+use Illuminate\Http\Response;
 
 class UserController extends Controller
 {
@@ -25,6 +26,6 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect()->route('cp.users.show', ['id' => $user->id]);
+        return (new Response())->header('x-redirect', route('cp.users.show', $user));
     }
 }

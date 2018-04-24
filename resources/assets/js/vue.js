@@ -22,9 +22,9 @@ if ($('#create-user').length) {
     new Vue({
         el: '#create-user',
         data: {
-            name: "fsdfsd",
-            email: "fdfs@fdsf.com",
-            password: "fsdfsdf"
+            name: "",
+            email: "",
+            password: ""
         },
         methods: {
             submit: function () {
@@ -33,9 +33,6 @@ if ($('#create-user').length) {
                 validator.validateAll().then(function (value) {
                     if (value) {
                         axios.post(document.getElementById('create-user').action, data)
-                            .then(function (response) {
-                                console.log(response);
-                            })
                             .catch(function (result) {
                                 if (result.response.status == 422) {
                                     for (var field in result.response.data.errors) {

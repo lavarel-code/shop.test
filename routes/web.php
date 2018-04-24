@@ -21,6 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::namespace('Cp')->prefix('cp')->name('cp')->group(function () {
     Route::prefix('users')->name('.users')->group(function () {
+        // cp.users
         Route::get('/', 'UserController@index')->name('.index');
         Route::get('create', 'UserController@create')->name('.create');
         Route::get('{user}', 'UserController@show')->name('.show');
