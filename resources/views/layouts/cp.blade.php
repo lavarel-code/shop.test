@@ -11,8 +11,9 @@
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-<div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -24,9 +25,13 @@
                 </li>
             </ul>
         </div>
-    </nav>
-    <div id="flash-message">
-        <div :class="{'alert alert alert-danger alert-dismissible': true, 'show': message, 'fade': !message}"
+    </div>
+</nav>
+
+<main class="container" style="margin-top: 2rem">
+
+    <div v-show="message" id="flash-message">
+        <div :class="{'alert alert alert-danger alert-dismissible': true, 'show': true}"
              role="alert">
             @{{message}}
             <button @click="message = ''" type="button" class="close" aria-label="Close">
@@ -39,7 +44,7 @@
             @yield('content')
         </div>
     </div>
-</div>
+</main>
 <script src="{{ mix('js/app.js') }}" defer></script>
 </body>
 </html>
